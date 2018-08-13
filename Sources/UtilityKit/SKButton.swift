@@ -13,7 +13,7 @@ public protocol SKButton {
     func mouseDown(with event: NSEvent)
 }
 
-/// A SKSpriteNode that makes clicks easier to handle.
+/// An SKSpriteNode that makes clicks easier to handle.
 open class SKSpriteButton: SKSpriteNode, SKButton {
     public var onClick: SKButton.Handler
     /// Called whenever this node is clicked. Simply calls the closure stored in `onClick`.
@@ -59,53 +59,102 @@ open class SKSpriteButton: SKSpriteNode, SKButton {
     }
 }
 
+/// An SKShapeNode that makes clicks easier to handle.
 open class SKShapeButton: SKShapeNode, SKButton {
     public var onClick: SKButton.Handler
+    /// Called whenever this node is clicked. Simply calls the closure stored in `onClick`.
+    ///
+    /// - Parameter event: An object encapsulating information about the mouse-down event.
     open override func mouseDown(with event: NSEvent) {
         onClick()
     }
     
+    /// The designated initializer for this class. Takes a closure that will be called on clicks.
+    ///
+    /// - Parameter handler: The closure to be called on a click.
     public init(onClick handler: @escaping Handler) {
         onClick = handler
         super.init()
         self.isUserInteractionEnabled = true
     }
     
+    /// Creates an `SKShapeButton` with the shape of a rounded rectangle
+    ///
+    /// - Parameters:
+    ///   - size: The size of the rectangle
+    ///   - radius: The radius of the rounded corners.
+    ///   - handler: The closure to be called on a click.
     public convenience init(rectOf size: CGSize, cornerRadius radius: CGFloat, onClick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(roundedRect: CGRect(origin: CGPoint.zero, size: size), cornerWidth: radius, cornerHeight: radius, transform: nil)
     }
     
+    /// Creates a circular `SKShapeButton`
+    ///
+    /// - Parameters:
+    ///   - radius: The radius of the circle.
+    ///   - handler: The closure to be called on a click.
     public convenience init(circleOfRadius radius: CGFloat, onClick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(ellipseIn: CGRect(origin: CGPoint.zero, size: CGSize(width: radius, height: radius)), transform: nil)
     }
     
+    /// Creates an `SKShapeButton` with the specified path
+    ///
+    /// - Parameters:
+    ///   - path: The Core Graphics path to use.
+    ///   - handler: The closure to be called on a click.
     public convenience init(path: CGPath, centered _: Bool = false, onClick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = path
     }
     
+    /// Creates an `SKShapeButton` with the shape of a rounded rectangle
+    ///
+    /// - Parameters:
+    ///   - rect: The size and location of the rectangle.
+    ///   - radius: The radius of the rounded corners.
+    ///   - handler: The closure to be called on a click.
     public convenience init(rect: CGRect, cornerRadius radius: CGFloat, onclick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(roundedRect: rect, cornerWidth: radius, cornerHeight: radius, transform: nil)
     }
     
+    /// Creates an `SKShapeButton` with the shape of an ellipse of the specified size.
+    ///
+    /// - Parameters:
+    ///   - size: The size of the ellipse.
+    ///   - handler: The closure to be called on a click.
     public convenience init(ellipseOf size: CGSize, onclick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(ellipseIn: CGRect(origin: CGPoint.zero, size: size), transform: nil)
     }
     
+    /// Creates an `SKShapeButton` with the shape of an ellipse enclosed in the given rectangle.
+    ///
+    /// - Parameters:
+    ///   - rect: The rectangle that the `SKShapeButton` will be enclosed in.
+    ///   - handler: The closure to be called on a click.
     public convenience init(ellipseIn rect: CGRect, onclick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(ellipseIn: rect, transform: nil)
     }
     
+    /// Creates an `SKShapeButton` of the specified size.
+    ///
+    /// - Parameters:
+    ///   - size: The size of the `SKShapeButton`.
+    ///   - handler: The closure to be called on a click.
     public convenience init(rectOf size: CGSize, onclick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(rect: CGRect(origin: CGPoint.zero, size: size), transform: nil)
     }
     
+    /// Creates an `SKShapeButton` with the shape of the given rectangle.
+    ///
+    /// - Parameters:
+    ///   - rect: The shape of the `SKShapeButton`.
+    ///   - handler: The closure to be called on a click.
     public convenience init(rect: CGRect, onclick handler: @escaping Handler) {
         self.init(onClick: handler)
         self.path = CGPath(rect: rect, transform: nil)
