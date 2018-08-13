@@ -1,12 +1,13 @@
 import XCTest
+import CoreGraphics
 @testable import UtilityKit
 
-final class UtilityKitTests: XCTestCase {
+final class CGOperatorsTests: XCTestCase {
     func testExample() {
         
     }
-
-
+    
+    
     static var allTests = [
         ("testExample", testExample),
     ]

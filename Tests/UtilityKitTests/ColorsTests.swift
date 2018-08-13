@@ -1,12 +1,12 @@
 import XCTest
 @testable import UtilityKit
 
-final class UtilityKitTests: XCTestCase {
+final class ColorsTests: XCTestCase {
     func testExample() {
         
     }
-
-
+    
+    
     static var allTests = [
         ("testExample", testExample),
     ]
