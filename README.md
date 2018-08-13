@@ -1,3 +1,3 @@
-# UtilityKit
+# UtilityKit [![Build Status](https://travis-ci.com/Samasaur1/UtilityKit.svg?branch=master)](https://travis-ci.com/Samasaur1/UtilityKit)
 
-A description of this package.
+A collection of Swift utilities.
