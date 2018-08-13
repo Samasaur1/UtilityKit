@@ -1,3 +1,4 @@
+#if !os(Linux)
 import Foundation
 import SpriteKit
 
@@ -8,7 +9,7 @@ public class ActionQueueManager {
     /// The queue of actions that will be run on the node.
     private var queue: [SKAction] = []
     /// Whether the node is currently running an action.
-    private var isRunning = false
+    public private(set) var isRunning = false
     
     /// Creates a new ActionQueueManager to manage actions for the specified node.
     ///
@@ -50,3 +51,4 @@ public class ActionQueueManager {
         }
     }
 }
+#endif

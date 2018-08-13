@@ -1,3 +1,4 @@
+#if !os(Linux)
 import Foundation
 import SpriteKit
 
@@ -164,3 +165,4 @@ open class SKShapeButton: SKShapeNode, SKButton {
         fatalError("init(coder:) has not been implemented")
     }
 }
+#endif

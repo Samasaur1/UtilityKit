@@ -1,3 +1,4 @@
+#if !os(Linux)
 import AppKit
 
 public extension NSColor {
@@ -21,3 +22,4 @@ public extension NSColor {
         self.init(red:(hex >> 16) & 0xff, green:(hex >> 8) & 0xff, blue:hex & 0xff)
     }
 }
+#endif
