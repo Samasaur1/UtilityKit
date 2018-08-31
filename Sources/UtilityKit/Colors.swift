@@ -2,7 +2,7 @@
 import AppKit
 
 public extension NSColor {
-    /// Create a new `NSColor` object with the given red, green, and blue values, in a range of 0-255. This initializer will fail if
+    /// Create a new `NSColor` object with the given red, green, and blue values, in a range of 0-255. This initializer will fail if any of the parameters are outside the range.
     ///
     /// - Parameters:
     ///   - red: The red component of the color, from 0-255.
