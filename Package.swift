@@ -8,8 +8,11 @@ let package = Package(
     products: [
         .library(name: "UtilityKit", targets: ["UtilityKit"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/Samasaur1/ProtocolKit.git", from: "1.0.2"),
+    ],
     targets: [
-        .target(name: "UtilityKit", dependencies: []),
+        .target(name: "UtilityKit", dependencies: ["ProtocolKit"]),
         .testTarget(name: "UtilityKitTests", dependencies: ["UtilityKit"]),
     ]
 )
