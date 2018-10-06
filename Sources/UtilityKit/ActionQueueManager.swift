@@ -1,6 +1,7 @@
 #if !os(Linux)
 import Foundation
 import SpriteKit
+import ProtocolKit
 
 /// A class that manages a queue of SKActions to run on a specified SKNode.
 public class ActionQueueManager {
@@ -49,6 +50,12 @@ public class ActionQueueManager {
             node.run(queue[0], completion: self.actionCompleted)
             isRunning = true
         }
+    }
+}
+
+extension ActionQueueManager: Copiable {
+    public func copy() -> ActionQueueManager {
+        return ActionQueueManager(node: self.node.copy() as! SKNode)
     }
 }
 #endif

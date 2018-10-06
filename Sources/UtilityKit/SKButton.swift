@@ -68,6 +68,10 @@ open class SKSpriteButton: SKSpriteNode, SKButton {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    open override func copy(with zone: NSZone? = nil) -> Any {
+        return SKSpriteButton(texture: self.texture?.copy() as? SKTexture, color: self.color.copy() as! SKColor, size: self.size, onClick: self.onClick)
+    }
 }
 
 /// An SKShapeNode that makes clicks easier to handle.
@@ -173,6 +177,12 @@ open class SKShapeButton: SKShapeNode, SKButton {
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    open override func copy(with zone: NSZone? = nil) -> Any {
+        let s = SKShapeButton(onClick: self.onClick)
+        s.path = self.path
+        return s
     }
 }
 #endif
